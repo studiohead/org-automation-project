@@ -1,0 +1,10 @@
+{"id": "email-verify", "query": "how do we verify a client email address change", "audience": "all_staff", "expect_doc": "client-data-changes", "expect_section": "email"}
+{"id": "mailing", "query": "mailing address change requirements", "audience": "all_staff", "expect_doc": "client-data-changes", "expect_section": "mailing"}
+{"id": "beneficiary", "query": "can automation change a beneficiary", "audience": "all_staff", "expect_doc": "client-data-changes", "expect_section": "ownership"}
+{"id": "retention", "query": "how long do we keep signed documents", "audience": "all_staff", "expect_doc": "document-handling", "expect_section": "retention"}
+{"id": "external-share", "query": "sending documents to an attorney securely", "audience": "all_staff", "expect_doc": "document-handling", "expect_section": "outside"}
+{"id": "chatbot", "query": "can I paste client data into a public chatbot", "audience": "all_staff", "expect_doc": "ai-and-automation-use", "expect_section": "approved"}
+{"id": "approver-rule", "query": "who is allowed to approve an automated change", "audience": "all_staff", "expect_doc": "ai-and-automation-use", "expect_section": "human review"}
+{"id": "paraphrase-hard", "query": "how do I confirm someone really asked us to alter their contact details", "audience": "all_staff", "expect_doc": "client-data-changes", "expect_section": "email", "note": "TRAP: almost no shared keywords; keyword search is expected to struggle"}
+{"id": "fraud-restricted-all-staff", "query": "report suspected fraud escalate", "audience": "all_staff", "expect_doc": null, "forbid_doc": "compliance-escalations", "note": "access control: restricted policy must NOT appear"}
+{"id": "fraud-compliance", "query": "report suspected fraud escalate", "audience": "compliance", "expect_doc": "compliance-escalations", "expect_section": "fraud"}

@@ -1,0 +1,39 @@
+# PLAIN ENGLISH: The project's "ID card and shopping list".
+# It names the project, says which Python version it needs, and lists the
+# outside libraries (dependencies) it relies on. `pip install -e .` reads this file.
+
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "org-automation-scaffold"
+version = "0.9.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1",          # the web framework that serves our API
+  "uvicorn[standard]>=0.30,<1", # the server that runs FastAPI
+  "pydantic>=2.8,<3",           # checks that data has the right shape
+  "pydantic-settings>=2.4,<3",  # reads settings from .env
+  "python-multipart>=0.0.9",    # lets the API accept uploaded files (PDFs)
+  "pypdf>=4.3",                 # reads text out of PDFs
+  "httpx>=0.27",                # makes the web calls to Salesforce and Microsoft
+  "pyjwt[crypto]>=2.8",         # checks Microsoft Entra ID sign-in tokens
+]
+
+[project.optional-dependencies]
+claude = ["anthropic>=0.40"]    # only needed when EXTRACTION_MODE=claude
+dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.6"]  # testing + code-tidiness tools
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+org_automation = ["ui/*"]   # the demo web screen files ship with the package
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110

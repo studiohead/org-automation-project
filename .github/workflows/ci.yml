@@ -1,0 +1,17 @@
+# PLAIN ENGLISH: A robot that runs automatically on GitHub every time code is pushed.
+# It installs the project, checks code tidiness, runs the tests, and runs the
+# accuracy report. If any step fails, the push gets a red X.
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e ".[dev,claude]"
+      - run: ruff check .
+      - run: pytest -q
+      - run: python scripts/evaluate_extraction.py
+      - run: python scripts/evaluate_retrieval.py --strict
